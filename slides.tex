@@ -1,5 +1,5 @@
-% Created 2018-06-21 Thu 00:21
-\documentclass[13pt]{beamer}
+% Created 2018-06-21 Thu 01:19
+\documentclass[8pt]{beamer}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -27,7 +27,77 @@
 \begin{document}
 
 \maketitle
-\begin{frame}[label=sec-1]{Proof outline}
+
+\begin{frame}[label=sec-1]{Definitions}
+\begin{itemize}
+\item Polyhedra: $\Big\{ \vec{x} \in \mathbb{Q}^d \mid Ax \leq \vec{b} \Big\}$
+\item Polytope: bounded polyhedra.
+\item Cone: $cone(\vec{u_i}) = \Big\{ \sum_i \lambda_i \vec{u_i} \mid \lambda_i \geq 0 \Big \}$, $\vec{u_i} \in \mathbb{Q}^d$
+\item Simple cone: $SK = cone(\vec{u_i}), \vec u_i \in \mathbb{Z}^d$, $\vec u_i$ are linearly independent.
+\item Unimodular cone: $UK = cone(\vec u_i)$, $Volume(\vec u_i) = 1$
+\item Line: subspace.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=sec-2]{Pictures of defintions!}
+\begin{itemize}
+\item polytope
+\end{itemize}
+\begin{center}
+ \includegraphics[width=1cm, keepaspectratio]{res/polytope}
+\end{center}
+
+\begin{itemize}
+\item cone
+\end{itemize}
+\begin{center}
+ \includegraphics[width=1cm, keepaspectratio]{res/cone}
+\end{center}
+
+\begin{itemize}
+\item polyhedra
+\end{itemize}
+\begin{center}
+ \includegraphics[width=1cm, keepaspectratio]{res/polyhedra}
+\end{center}
+\end{frame}
+
+\begin{frame}[label=sec-3]{Example 1: valuation of line}
+\begin{itemize}
+\item P is a polyhedra, then $\mathcal{F}([P]) = \sum_{\vec{m} \in P \cap \mathbb{Z}^d} (x^{\vec{m}} )$
+\item $\mathcal{F}([P])(\vec 1)$ = number of points.
+\end{itemize}
+\begin{align*}
+\mathcal{F}((-\infty, \infty)) &= \sum_{i \in \mathbb{Z}} x^i \\
+\text{count}(x) &= \mathcal{F}((-\infty, \infty)) \\
+                &= \mathcal{F}((-\infty, 0]) + \mathcal{F}([0, \infty))  - \mathcal{F}(0) \\ 
+                &=( \ldots + x^{-2} + x^{-1} + x^0) + (x^0 + x^1 + x^2 + \ldots) - x^0 \\
+                &= \frac{1}{1 - \frac{1}{x}} + \frac{1}{1 - x} - 1 \\ 
+                &= \frac{-x}{1 - x} + \frac{1}{1 - x}  = \frac{1 - x}{1 - x} - 1 = 0 \\
+\end{align*}
+
+\begin{itemize}
+\item number of points in a line is 0!
+\end{itemize}
+\end{frame}
+\begin{frame}[label=sec-4]{Example 2: valuation of interval}
+\begin{center}
+ \includegraphics[width=3cm, keepaspectratio]{res/interval}
+\end{center}
+
+\begin{align*}
+\text{count}(x) &= \mathcal{F}([0, n]) = \mathcal{F}([k, \infty)) + \mathcal{F}((-\infty, n]) - \mathcal{F}((\infty, infty)) \\
+                &= (x^k + x^{k + 1} + \ldots) + \\
+                & (\ldots +  x^{n - 2} + x^{n - 1} + x^n) +  \\
+                & (\ldots + x^{-2} + x^{-1} + x^0 + x^1 + \ldots) \\
+                &= \frac{x^k}{1 - x} + \frac{x^n}{1 - x^{-1}} + 0 \\
+                &= \frac{x^k - x^{n + 1}}{1 - x} \\
+\text{count}(1) &= \text{L'hospital} = (n + 1) - k = n - k + 1
+\end{align*}
+\end{frame}
+
+
+\begin{frame}[label=sec-5]{Proof outline}
 \begin{itemize}
 \item Algbra of polyhedra, $P(\mathbb{Q}^d)$
 \item $[\text{ }] : \mathbb{Q}^d \rightarrow P(\mathbb{Q}^d)$
@@ -35,7 +105,7 @@
 \begin{itemize}
 \item \mathcal{F} is linear
 \item P is a polyhedra, then $\mathcal{F}([P]) = \sum_{\vec{m} \in P \cap \mathbb{Z}^d} (x^{\vec{m}} )$
-\item $\mathcal{F}([\text{line}]) = 0$
+\item $\mathcal{F}([\text{line}]) = 0$ (important, allows modulo line decompositions)
 \end{itemize}
 \item $\mathcal{F}(P)(1) = \text{number of points in} P$
 \item reduction: \mathcal{F} for cones gives full \mathcal{F}
@@ -44,14 +114,16 @@
 \end{frame}
 
 
-\begin{frame}[label=sec-2]{Caveats}
+\begin{frame}[label=sec-6]{Caveats}
 \begin{itemize}
 \item Do not understand subtleties of convergence arguments (how is evaluating at $\vec{1}$ correct?).
 \item No intuition for LLL, Lattice reduction.
 \end{itemize}
 \end{frame}
 
-\begin{frame}[label=sec-3]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1 (Polytopes)}
+
+
+\begin{frame}[label=sec-7]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1 (Polytopes)}
 \begin{center}
  \includegraphics[width=6cm, keepaspectratio]{res/polytope-as-cross-section-of-cone}
 \end{center}
@@ -68,7 +140,7 @@
 
 
 
-\begin{frame}[label=sec-4]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)}
+\begin{frame}[label=sec-8]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)}
 \begin{itemize}
 \item Line = cone + cone - point.
 \item Since line can be translated, $\forall \vec{x} \in L, L = \vec{x} + L$
@@ -77,21 +149,40 @@
 \item $\mathcal{F}(L) = 0$
 \end{itemize}
 \end{itemize}
+
+\begin{align*}
+\text{count}(x) &= \mathcal{F}((-\infty, \infty)) \\
+                &=( \ldots + x^{-2} + x^{-1} + x^0) + (x^0 + x^1 + x^2 + \ldots) - x^0 \\
+                &= \frac{1}{1 - \frac{1}{x}} + \frac{1}{1 - x} - 1 \\ 
+\end{align*}
+\begin{itemize}
+\item In 1-d example, radius of convergence of left and right cone was 0
+\item Is this really well-defined? (what is this ring which admits $f(x) = \ldots + x^{-1} + x^0 + x^1 + \ldots$)
+\end{itemize}
 \end{frame}
 
 
-\begin{frame}[label=sec-5]{Assuming $\mathcal{F}$ for simple cone, derive for cone}
+\begin{frame}[label=sec-9]{Assuming $\mathcal{F}$ for simple cone, derive for cone}
 \begin{itemize}
+\item Simple cone: $SK = co(u_i) = \{ \sum_i \lambda_i u_i \vert \lambda_i \geq 0 \}$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+\item Cone: $C = co(u_i)$, $u_i \in \mathbb{Q}^d$
 \item inclusion exclusion: decompose cone into simple cones.
 \end{itemize}
 \includegraphics[width=.9\linewidth]{./res/cut-cone-into-simple-cones.png}
 \end{frame}
 
 
+\begin{frame}[label=sec-10]{$\mathcal{F}$ for simple cones: Part 1}
+\end{frame}
+
+
+\begin{frame}[label=sec-11]{$\mathcal{F}$ for simple cones: Part 2}
+\end{frame}
 
 
 
-\begin{frame}[label=sec-6]{References}
+
+\begin{frame}[label=sec-12]{References}
 \begin{itemize}
 \item Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
 \item Integer points in polyhedra: Alexander Barvinok
@@ -99,11 +190,11 @@
 \end{frame}
 
 
-\begin{frame}[label=sec-7]{Thanks!}
+\begin{frame}[label=sec-13]{Thanks!}
 Questions?
 \end{frame}
 
-\begin{frame}[label=sec-8]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
+\begin{frame}[label=sec-14]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
 \includegraphics[width=.9\linewidth]{./res/polytope-as-sum-of-tangent-cones.png}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)
