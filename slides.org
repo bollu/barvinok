@@ -104,10 +104,13 @@
 
 
 * Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)
-- Line = cone + cone - point. 
-- Since line can be translated, $\forall \vec{x} \in L, L = \vec{x} + L$
-  + $\forall x \in L, \mathcal{F}(L) = \mathcal{F}(L) + \mathcal{F}(\vec{x})$
-  + $\mathcal{F}(L) = 0$
+- Line = \sum_{dimension} cone + cone - point. 
+- Since line can be translated:
+\begin{align*}
+\forall \vec{x} \in L, L &= \vec{x} + L \\
+\forall x \in L, \mathcal{F}(L) &= \mathcal{F}(L) + \mathcal{F}(\vec{x})  \\
+\mathcal{F}(L) &= 0 \\
+\end{align*}
 
 \begin{align*}
 \text{count}(x) &= \mathcal{F}((-\infty, \infty)) \\
@@ -139,9 +142,9 @@
 
 * $\mathcal{F}$ for simple cones: Part 2
 - General story is similar
-- $SK = co(u_i)$
+- $SK = co(u_i)$, $u_i$ linearly independent.
 - Since $u_i$ is linearly independent, some points $\vec{x} \in cone(u_i)$ have unique representation  $\vec x = \sum_i \lambda_i u_i$, $\lambda_i \in \mathbb{Z}$
-- fundamental paralellopiped will tile the plane.
+- fundamental paralellopiped $(\Pi)$ will tile the plane.
 - We can count the $\vec{x}$, and make $\vec{x}$ responsible for the "tile" of skipped points.
 
 \begin{center}
@@ -149,6 +152,8 @@
  \includegraphics[width=3.40cm, keepaspectratio]{res/fundamental-parallelopiped.png}
 \end{center}
 
+$$\mathcal{F}(SK) &= \Bigg(\underbrace{\sum_{\vec p \in \Pi \cap \mathbb{Z}^d} x^{\vec p} }_\text{per-tile points} \Bigg)
+                           \underbrace{\prod_i \frac{1}{1 - x^{u_i}}}_\text{tile starting point \( \vec{x} \)}$$
 
   
 

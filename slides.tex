@@ -1,4 +1,4 @@
-% Created 2018-06-21 Thu 01:46
+% Created 2018-06-21 Thu 01:58
 \documentclass[8pt]{beamer}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -142,13 +142,14 @@
 
 \begin{frame}[label=sec-8]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)}
 \begin{itemize}
-\item Line = cone + cone - point.
-\item Since line can be translated, $\forall \vec{x} \in L, L = \vec{x} + L$
-\begin{itemize}
-\item $\forall x \in L, \mathcal{F}(L) = \mathcal{F}(L) + \mathcal{F}(\vec{x})$
-\item $\mathcal{F}(L) = 0$
+\item Line = $\sum$$_{\text{dimension}}$ cone + cone - point.
+\item Since line can be translated:
 \end{itemize}
-\end{itemize}
+\begin{align*}
+\forall \vec{x} \in L, L &= \vec{x} + L \\
+\forall x \in L, \mathcal{F}(L) &= \mathcal{F}(L) + \mathcal{F}(\vec{x})  \\
+\mathcal{F}(L) &= 0 \\
+\end{align*}
 
 \begin{align*}
 \text{count}(x) &= \mathcal{F}((-\infty, \infty)) \\
@@ -190,9 +191,9 @@
 \begin{frame}[label=sec-11]{$\mathcal{F}$ for simple cones: Part 2}
 \begin{itemize}
 \item General story is similar
-\item $SK = co(u_i)$
+\item $SK = co(u_i)$, $u_i$ linearly independent.
 \item Since $u_i$ is linearly independent, some points $\vec{x} \in cone(u_i)$ have unique representation  $\vec x = \sum_i \lambda_i u_i$, $\lambda_i \in \mathbb{Z}$
-\item fundamental paralellopiped will tile the plane.
+\item fundamental paralellopiped $(\Pi)$ will tile the plane.
 \item We can count the $\vec{x}$, and make $\vec{x}$ responsible for the "tile" of skipped points.
 \end{itemize}
 
@@ -200,8 +201,10 @@
  \includegraphics[width=3cm, keepaspectratio]{res/fundamental-paralellopiped-tiled}
  \includegraphics[width=3.40cm, keepaspectratio]{res/fundamental-parallelopiped.png}
 \end{center}
-\end{frame}
 
+$$\mathcal{F}(SK) &= \Bigg(\underbrace{\sum_{\vec p \in \Pi \cap \mathbb{Z}^d} x^{\vec p} }_\text{per-tile points} \Bigg)
+                           \underbrace{\prod_i \frac{1}{1 - x^{u_i}}}_\text{tile starting point \( \vec{x} \)}$$
+\end{frame}
 
 
 
