@@ -1,3 +1,13 @@
+#+TITLE:     Counting integer points in polyhedra
+#+AUTHOR:    Siddharth Bhat
+#+EMAIL:     siddu.druid@gmail.com
+#+DATE:      June 22nd, 2018
+
+#+LATEX_CLASS_OPTIONS: [13pt]
+#+OPTIONS:    toc:nil
+
+
+# #+LaTeX_CLASS_OPTIONS: [tiny]
 * Proof outline
 
 - Algbra of polyhedra, $P(\mathbb{Q}^d)$
@@ -17,9 +27,18 @@
 
 * Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1 (Polytopes)
 
-[[./res/polytope-as-cross-section-of-cone.png]]
+#+attr_latex: :width 120px
+# [[./res/polytope-as-cross-section-of-cone.png]]
+\begin{center}
+ \includegraphics[width=6cm, keepaspectratio]{res/polytope-as-cross-section-of-cone}
+\end{center}
 - Write polytope as intersection of hyperplane + cone.
-- $\mathcal{F}(\text{polytope}) = (\frac{d}{dx} \mathcal{F}(\text{cone}))(1)$
+- $\mathcal{F}(\text{polytope}) = (\frac{d}{dx_{d+1}} \mathcal{F}(\text{cone}))(\langle \vec 1^{d}, 0 \rangle)$
+- $\mathcal{F}(\text{cone}) = {x_{d+1}}^0 (\ldots) +  {x_{d+1}} (\texttt{POLYTOPE}) +  {x_{d+1}}^2(\ldots) + \ldots$
+- $\frac{d}{dx_d} \mathcal{F}(\text{cone}) = 0 + 0 \cdot  (\ldots) + 1 \cdot \texttt{POLYTOPE} +    2 x_{d+1} (\ldots) + \ldots$
+- $\frac{d}{dx_d} \mathcal{F}(\text{cone})(\langle \vec 1^{d}, 0 \rangle) = \texttt{POLYTOPE(\(\vec 1 \))} +  2 \cdot 0 \cdot (\ldots) + \ldots$
+- $\frac{d}{dx_d} \mathcal{F}(\text{cone})(\langle \vec 1^{d}, 0 \rangle) = \texttt{POLYTOPE(\(\vec 1 \))}$
+
 
 
 

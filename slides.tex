@@ -1,5 +1,5 @@
-% Created 2018-06-20 Wed 23:48
-\documentclass[presentation]{beamer}
+% Created 2018-06-21 Thu 00:21
+\documentclass[13pt]{beamer}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
@@ -17,9 +17,9 @@
 \usepackage{hyperref}
 \tolerance=1000
 \usetheme{default}
-\author{bollu}
-\date{\today}
-\title{slides}
+\author{Siddharth Bhat}
+\date{June 22nd, 2018}
+\title{Counting integer points in polyhedra}
 \hypersetup{
   pdfkeywords={},
   pdfsubject={},
@@ -27,10 +27,6 @@
 \begin{document}
 
 \maketitle
-\begin{frame}{Outline}
-\tableofcontents
-\end{frame}
-
 \begin{frame}[label=sec-1]{Proof outline}
 \begin{itemize}
 \item Algbra of polyhedra, $P(\mathbb{Q}^d)$
@@ -56,12 +52,21 @@
 \end{frame}
 
 \begin{frame}[label=sec-3]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1 (Polytopes)}
-\includegraphics[width=.9\linewidth]{./res/polytope-as-cross-section-of-cone.png}
+\begin{center}
+ \includegraphics[width=6cm, keepaspectratio]{res/polytope-as-cross-section-of-cone}
+\end{center}
 \begin{itemize}
 \item Write polytope as intersection of hyperplane + cone.
-\item $\mathcal{F}(\text{polytope}) = (\frac{d}{dx} \mathcal{F}(\text{cone}))(1)$
+\item $\mathcal{F}(\text{polytope}) = (\frac{d}{dx_{d+1}} \mathcal{F}(\text{cone}))(\langle \vec 1^{d}, 0 \rangle)$
+\item $\mathcal{F}(\text{cone}) = {x_{d+1}}^0 (\ldots) +  {x_{d+1}} (\texttt{POLYTOPE}) +  {x_{d+1}}^2(\ldots) + \ldots$
+\item $\frac{d}{dx_d} \mathcal{F}(\text{cone}) = 0 + 0 \cdot  (\ldots) + 1 \cdot \texttt{POLYTOPE} +    2 x_{d+1} (\ldots) + \ldots$
+\item $\frac{d}{dx_d} \mathcal{F}(\text{cone})(\langle \vec 1^{d}, 0 \rangle) = \texttt{POLYTOPE(\(\vec 1 \))} +  2 \cdot 0 \cdot (\ldots) + \ldots$
+\item $\frac{d}{dx_d} \mathcal{F}(\text{cone})(\langle \vec 1^{d}, 0 \rangle) = \texttt{POLYTOPE(\(\vec 1 \))}$
 \end{itemize}
 \end{frame}
+
+
+
 
 \begin{frame}[label=sec-4]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)}
 \begin{itemize}
@@ -91,6 +96,15 @@
 \item Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
 \item Integer points in polyhedra: Alexander Barvinok
 \end{itemize}
+\end{frame}
+
+
+\begin{frame}[label=sec-7]{Thanks!}
+Questions?
+\end{frame}
+
+\begin{frame}[label=sec-8]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
+\includegraphics[width=.9\linewidth]{./res/polytope-as-sum-of-tangent-cones.png}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)
 \end{document}
