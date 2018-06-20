@@ -1,0 +1,51 @@
+* Proof outline
+
+- Algbra of polyhedra, $P(\mathbb{Q}^d)$
+- $[\text{ }] : \mathbb{Q}^d \rightarrow P(\mathbb{Q}^d)$
+- Existence of $\mathcal{F}: P(\mathbb{Q}^d) \rightarrow \mathbb{C}(x)$, such that:
+    + \mathcal{F} is linear
+    + P is a polyhedra, then $\mathcal{F}([P]) = \sum_{\vec{m} \in P \cap \mathbb{Z}^d} (x^{\vec{m}} )$
+    + $\mathcal{F}([\text{line}]) = 0$
+- $\mathcal{F}(P)(1) = \text{number of points in} P$
+- reduction: \mathcal{F} for cones gives full \mathcal{F}
+- reduction: \mathcal{F} for simple cones gives \mathcal{F} for cones
+
+
+* Caveats
+- Do not understand subtleties of convergence arguments (how is evaluating at $\vec{1}$ correct?).
+- No intuition for LLL, Lattice reduction.
+
+* Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1 (Polytopes)
+
+[[./res/polytope-as-cross-section-of-cone.png]]
+- Write polytope as intersection of hyperplane + cone.
+- $\mathcal{F}(\text{polytope}) = (\frac{d}{dx} \mathcal{F}(\text{cone}))(1)$
+
+
+
+* Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 2 (Lines)
+- Line = cone + cone - point. 
+- Since line can be translated, $\forall \vec{x} \in L, L = \vec{x} + L$
+  + $\forall x \in L, \mathcal{F}(L) = \mathcal{F}(L) + \mathcal{F}(\vec{x})$
+  + $\mathcal{F}(L) = 0$
+
+
+* Assuming $\mathcal{F}$ for simple cone, derive for cone
+
+- inclusion exclusion: decompose cone into simple cones.
+[[./res/cut-cone-into-simple-cones.png]]
+
+
+
+  
+
+* References
+- Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
+- Integer points in polyhedra: Alexander Barvinok
+
+
+* Thanks!
+Questions?
+
+* Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)
+[[./res/polytope-as-sum-of-tangent-cones.png]]
