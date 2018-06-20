@@ -1,4 +1,4 @@
-% Created 2018-06-21 Thu 01:19
+% Created 2018-06-21 Thu 01:46
 \documentclass[8pt]{beamer}
 \usepackage[latin1]{inputenc}
 \usepackage[T1]{fontenc}
@@ -173,10 +173,33 @@
 
 
 \begin{frame}[label=sec-10]{$\mathcal{F}$ for simple cones: Part 1}
+\begin{itemize}
+\item Consider the positive orthant in 3D: $P \subset \mathbb{Q}^3 = \Big\{(x, y, z) \mid x, y, z \geq 0 \Big\}$
+\item $P = cone((1, 0, 0), (0, 1, 0), (0, 0, 1))$
+\item this is a simple cone, and counting is simple:
+\end{itemize}
+
+\begin{align*}
+\mathcal{F}([P]) &= \sum_{i, j, k \in [0, \infty)} x^i y^j z^k \\
+                 &= \sum_{i=0}^\infty x^i \Bigg(\sum_{j=0}^\infty y^j \Bigg(\sum_{k=0}^\infty z^k\Bigg)\Bigg) \\
+                 &= \frac{1}{1 - x} \cdot \frac{1}{1 - y} \cdot \frac{1}{1 - z}
+\end{align*}
 \end{frame}
 
 
 \begin{frame}[label=sec-11]{$\mathcal{F}$ for simple cones: Part 2}
+\begin{itemize}
+\item General story is similar
+\item $SK = co(u_i)$
+\item Since $u_i$ is linearly independent, some points $\vec{x} \in cone(u_i)$ have unique representation  $\vec x = \sum_i \lambda_i u_i$, $\lambda_i \in \mathbb{Z}$
+\item fundamental paralellopiped will tile the plane.
+\item We can count the $\vec{x}$, and make $\vec{x}$ responsible for the "tile" of skipped points.
+\end{itemize}
+
+\begin{center}
+ \includegraphics[width=3cm, keepaspectratio]{res/fundamental-paralellopiped-tiled}
+ \includegraphics[width=3.40cm, keepaspectratio]{res/fundamental-parallelopiped.png}
+\end{center}
 \end{frame}
 
 
