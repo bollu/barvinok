@@ -185,12 +185,13 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 - Introduce procedure which takes \textbf{polynomial steps} to \textbf{reduce Index(K)}
 - Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
 - High level idea:
-    + Pick a non-zero integer point $p$.
-    + create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
-    + make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+    + Pick a non-zero integer point $p$, which is shorter than the current $u_i$.
+    + create $d$ new "basis sets", $\texttt{Basis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
     + make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
+    + Intuition for shorter index: $p$ is shorter than $u_i$, parallelopiped will be smaller.
     + $K = \sum \alpha_i K_i + \text{faces of \(K_i \)}$
-    + show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1
+    + show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1  
+    + eliminate faces for $K_i$ with trick to kill lower dimensional objects.
 
 * Decomposition example
 
@@ -242,6 +243,8 @@ Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
 
 - Hence, by Minkowski convex body, we find a point $p \in \mathbb{Z}^d$ in $\Pi_0$. If this point is in the wrong direction (facing outward), pick $-p$.
 
+- This only gives us \textbf{existence} of such a point; need to use LLL to \textbf{construct} this point.
+
 * Minkowski convex body theorem example
 
 \begin{center}
@@ -262,10 +265,22 @@ Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
 
 
 * Using LLL
-- High level idea:
-    + Pick a non-zero integer point $p$.
-    + create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
-    + make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+- Refer to page $140$ of integer points in polyhedra.
+
+- Recap: Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+    + Pick a non-zero integer point $p$ in $K$ \textbf{(how do we find it?)}
+
+- Let $T: V \rightarrow V$, $T(u_i) = e_i$.
+- Let $\Lambda  = \text{Lattice of } u_i$
+- $\Lambda_0 = T(\Lambda)$
+- Apply LLL on $\Lambda_0$, get shorter description
+- Construct $w_0 \in \Lambda_0 \setminus \{ 0 \}$ such that $\lVert w_0 \rVert_{\infty}$ is minimum.
+- This bounds $\lVert w_0 \rVert  \leq \lVert w_0 \rVert_{\infty} \sqrt{d}$ .
+- $w = T^{-1}(w_0)$
+
+
+
+- Caveat: Why do we need this song and dance? Why not just work on the original space?
 
 * Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)
 [[./res/polytope-as-sum-of-tangent-cones.png]]

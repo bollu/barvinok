@@ -1,4 +1,4 @@
-% Created 2018-06-21 Thu 12:07
+% Created 2018-06-21 Thu 12:30
 \documentclass[8pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -246,12 +246,13 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 \item Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
 \item High level idea:
 \begin{itemize}
-\item Pick a non-zero integer point $p$.
-\item create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
-\item make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+\item Pick a non-zero integer point $p$, which is shorter than the current $u_i$.
+\item create $d$ new "basis sets", $\texttt{Basis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
 \item make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
+\item Intuition for shorter index: $p$ is shorter than $u_i$, parallelopiped will be smaller.
 \item $K = \sum \alpha_i K_i + \text{faces of \(K_i \)}$
 \item show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1
+\item eliminate faces for $K_i$ with trick to kill lower dimensional objects.
 \end{itemize}
 \end{itemize}
 \end{frame}
@@ -320,6 +321,8 @@ Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
 
 \begin{itemize}
 \item Hence, by Minkowski convex body, we find a point $p \in \mathbb{Z}^d$ in $\Pi_0$. If this point is in the wrong direction (facing outward), pick $-p$.
+
+\item This only gives us \textbf{existence} of such a point; need to use LLL to \textbf{construct} this point.
 \end{itemize}
 \end{frame}
 
@@ -349,12 +352,26 @@ Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
 
 \begin{frame}[label=sec-22]{Using LLL}
 \begin{itemize}
-\item High level idea:
+\item Refer to page $140$ of integer points in polyhedra.
+
+\item Recap: Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
 \begin{itemize}
-\item Pick a non-zero integer point $p$.
-\item create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
-\item make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+\item Pick a non-zero integer point $p$ in $K$ \textbf{(how do we find it?)}
 \end{itemize}
+
+\item Let $T: V \rightarrow V$, $T(u_i) = e_i$.
+\item Let $\Lambda  = \text{Lattice of } u_i$
+\item $\Lambda_0 = T(\Lambda)$
+\item Apply LLL on $\Lambda_0$, get shorter description
+\item Construct $w_0 \in \Lambda_0 \setminus \{ 0 \}$ such that $\lVert w_0 \rVert_{\infty}$ is minimum.
+\item This bounds $\lVert w_0 \rVert  \leq \lVert w_0 \rVert_{\infty} \sqrt{d}$ .
+\item $w = T^{-1}(w_0)$
+\end{itemize}
+
+
+
+\begin{itemize}
+\item Caveat: Why do we need this song and dance? Why not just work on the original space?
 \end{itemize}
 \end{frame}
 
