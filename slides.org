@@ -78,9 +78,11 @@
 - $\mathcal{F}(P)(1) = \text{number of points in} P$
 - reduction: \mathcal{F} for cones gives full \mathcal{F}
 - reduction: \mathcal{F} for simple cones gives \mathcal{F} for cones
+- performance: $\mathcal{F}$ for unimodular cones gives $\mathcal{F}$ for simple cones
 
 
 * Caveats
+- Self taught :) 
 - Do not understand subtleties of convergence arguments (how is evaluating at $\vec{1}$ correct?).
 - No intuition for LLL, Lattice reduction.
   
