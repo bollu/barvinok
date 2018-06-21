@@ -162,10 +162,12 @@ $$\mathcal{F}(SK) &= \Bigg(\underbrace{\sum_{\vec p \in \Pi \cap \mathbb{Z}^d} x
 - Write simple cone as sum of unimodular cones:
 $$[K] = \sum_i \alpha_i [K_i]+ \text{lower dimesnional cones}$$ 
 
-- We concentrate on $\sum_i \alpha_i [K_i]
+- We concentrate on $\sum_i \alpha_i [K_i]$
 \begin{center}
     $\alpha_i \in \{ -1, 1 \}$  and $K_i$ are unimodular.
 \end{center}
+
+- Lower dimensional cones are taken care of by a trick.
 
 
 
