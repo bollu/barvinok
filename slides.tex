@@ -1,4 +1,4 @@
-% Created 2018-06-21 Thu 03:48
+% Created 2018-06-21 Thu 11:59
 \documentclass[8pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -246,10 +246,7 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 \item Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
 \item High level idea:
 \begin{itemize}
-\item Pick a non-zero integer point $p$ in $K$ (why does this integer point exist?)
-\begin{itemize}
-\item Use minkowski convex body theorem: large enough symmetric object centered at origin will have a non zero integer point.
-\end{itemize}
+\item Pick a non-zero integer point $p$.
 \item create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
 \item make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
 \item make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
@@ -259,8 +256,14 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 \end{itemize}
 \end{frame}
 
+\begin{frame}[label=sec-15]{Decomposition example}
+\begin{center}
+\includegraphics[width=7cm, keepaspectratio]{res/simple-cone-as-combination-smaller-indeces}
+\end{center}
+\end{frame}
 
-\begin{frame}[label=sec-15]{Polar trick}
+
+\begin{frame}[label=sec-16]{Polar trick}
 \begin{itemize}
 \item Polar: $$P^\circ = \Bigg\{ \vec y \in \mathbb{Q}^d :  \forall \vec p \in P, \  \vec p \cdot \vec y  \ \geq 0 \Bigg\}$$
 \end{itemize}
@@ -270,7 +273,7 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 \end{center}
 
 \begin{itemize}
-\item Lower dimensional cones do not matter. First take $[K^\circ]$, then compue unimodular decomposition of this:
+\item Lower dimensional cones do not matter. First take $[K^\circ]$, then compute unimodular decomposition of this:
 \end{itemize}
 $$[K^\circ] = \sum_i \alpha_i [K_i] + \text{lower dimensional cones}$$
 $$[(K^\circ)^\circ] = [K] = \sum_i \alpha_i K_i + \text{cones with lines}$$
@@ -279,7 +282,7 @@ $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones
 
 
 
-\begin{frame}[label=sec-16]{References}
+\begin{frame}[label=sec-17]{References}
 \begin{itemize}
 \item Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
 \item Integer points in polyhedra: Alexander Barvinok
@@ -287,11 +290,50 @@ $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones
 \end{frame}
 
 
-\begin{frame}[label=sec-17]{Thanks!}
+\begin{frame}[label=sec-18]{Thanks!}
 Questions?
 \end{frame}
 
-\begin{frame}[label=sec-18]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
+
+\begin{frame}[label=sec-19]{Minkowski convex body theorem}
+\begin{itemize}
+\item Statement: Convex set $P \subset \mathbb{R}^d$, which is symmetric with respect to the origin ($\forall x \in P, -x \in P$), has volume greater than or
+equal to $2^d$ contains a non-zero integer point.
+
+\item Recap: Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+\begin{itemize}
+\item Pick a non-zero integer point $p$ in $K$ \textbf{(why does this integer point exist?)}.
+\end{itemize}
+
+\item Construct $$\Pi_0 = \Bigg\{ \sum_i \alpha_i u_i :  |\alpha_i| \leq \frac{1}{\sqrt[d]{Index(K)}}  \Bigg\}$$
+\begin{itemize}
+\item Symmetric
+\item Length per axis: $\frac{2 |u_i|}{\sqrt[d]{Index(K)}}$
+\end{itemize}
+
+\item Total volume:
+\end{itemize}
+\begin{align*}
+Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
+ &= 2^d \frac{ \prod_{i=1}^d |u_i| }{Index(K)} = 2^d
+\end{align*}
+
+\begin{itemize}
+\item Hence, by Minkowski convex body, we find a point $p \in \mathbb{Z}^d$ in $\Pi_0$. If this point is in the wrong direction (facing outward), pick $-p$.
+\end{itemize}
+\end{frame}
+
+\begin{frame}[label=sec-20]{Minkowski convex body theorem example}
+\begin{center}
+\includegraphics[width=3cm, keepaspectratio]{res/minkowski-convex-body}
+\end{center}
+\end{frame}
+
+
+\begin{frame}[label=sec-21]{LLL}
+\end{frame}
+
+\begin{frame}[label=sec-22]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
 \includegraphics[width=.9\linewidth]{./res/polytope-as-sum-of-tangent-cones.png}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)

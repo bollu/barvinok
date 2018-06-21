@@ -185,13 +185,18 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 - Introduce procedure which takes \textbf{polynomial steps} to \textbf{reduce Index(K)}
 - Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
 - High level idea:
-    + Pick a non-zero integer point $p$ in $K$ (why does this integer point exist?)
-          + Use minkowski convex body theorem: large enough symmetric object centered at origin will have a non zero integer point.
+    + Pick a non-zero integer point $p$.
     + create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
     + make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
     + make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
     + $K = \sum \alpha_i K_i + \text{faces of \(K_i \)}$
     + show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1
+
+* Decomposition example
+
+\begin{center}
+\includegraphics[width=7cm, keepaspectratio]{res/simple-cone-as-combination-smaller-indeces}
+\end{center}
 
 
 * Polar trick
@@ -201,7 +206,7 @@ $Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure o
 \includegraphics[width=3.40cm, keepaspectratio]{res/polar-of-cone.png}
 \end{center}
 
-- Lower dimensional cones do not matter. First take $[K^\circ]$, then compue unimodular decomposition of this:
+- Lower dimensional cones do not matter. First take $[K^\circ]$, then compute unimodular decomposition of this:
 $$[K^\circ] = \sum_i \alpha_i [K_i] + \text{lower dimensional cones}$$
 $$[(K^\circ)^\circ] = [K] = \sum_i \alpha_i K_i + \text{cones with lines}$$
 $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones with lines}) = \sum_i \alpha_i \mathcal{F}(K_i) + 0$$
@@ -215,6 +220,36 @@ $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones
 
 * Thanks!
 Questions?
+
+
+* Minkowski convex body theorem
+
+- Statement: Convex set $P \subset \mathbb{R}^d$, which is symmetric with respect to the origin ($\forall x \in P, -x \in P$), has volume greater than or
+  equal to $2^d$ contains a non-zero integer point.
+
+- Recap: Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+    + Pick a non-zero integer point $p$ in $K$ \textbf{(why does this integer point exist?)}.
+
+- Construct $$\Pi_0 = \Bigg\{ \sum_i \alpha_i u_i :  |\alpha_i| \leq \frac{1}{\sqrt[d]{Index(K)}}  \Bigg\}$$
+  + Symmetric
+  + Length per axis: $\frac{2 |u_i|}{\sqrt[d]{Index(K)}}$
+
+- Total volume:
+\begin{align*}
+Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
+ &= 2^d \frac{ \prod_{i=1}^d |u_i| }{Index(K)} = 2^d
+\end{align*}
+
+- Hence, by Minkowski convex body, we find a point $p \in \mathbb{Z}^d$ in $\Pi_0$. If this point is in the wrong direction (facing outward), pick $-p$.
+
+* Minkowski convex body theorem example
+
+\begin{center}
+\includegraphics[width=3cm, keepaspectratio]{res/minkowski-convex-body}
+\end{center}
+
+
+* LLL 
 
 * Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)
 [[./res/polytope-as-sum-of-tangent-cones.png]]
