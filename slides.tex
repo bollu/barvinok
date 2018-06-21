@@ -1,4 +1,4 @@
-% Created 2018-06-21 Thu 03:21
+% Created 2018-06-21 Thu 03:40
 \documentclass[8pt]{beamer}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -218,15 +218,43 @@ $$[K] = \sum_i \alpha_i [K_i]+ \text{lower dimesnional cones}$$
 \begin{center}
     $\alpha_i \in \{ -1, 1 \}$  and $K_i$ are unimodular.
 \end{center}
+\end{frame}
+
+
+
+\begin{frame}[label=sec-13]{Unimodular decomposition of a simple cone $K$: Part 1}
+\begin{center}
+\includegraphics[width=10cm, keepaspectratio]{res/simple-cone-into-unimodular-cones}
+\end{center}
+\end{frame}
+
+\begin{frame}[label=sec-14]{Unimodular decomposition of simple cone $K$: Part 2}
+\begin{itemize}
+\item $Index(K) = Volume(\Pi(K))$
+\end{itemize}
+
+$Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure of non-unimodularity.
 
 \begin{itemize}
-\item use LLL to generate a new basis with a new vector $w$
-\item recurse over this new cone set.
+\item Introduce procedure which takes \textbf{polynomial steps} to \textbf{reduce Index(K)}
+\item Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+\item High level idea:
+\begin{itemize}
+\item Pick a non-zero integer point $p$ in $K$ (why does this integer point exist?)
+\begin{itemize}
+\item Use minkowski convex body theorem: large enough symmetric object centered at origin will have a non zero integer point.
+\end{itemize}
+\item create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
+\item make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+\item make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
+\item $K = \sum \alpha_i K_i + \text{faces of \(K_i \)}$
+\item show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1
+\end{itemize}
 \end{itemize}
 \end{frame}
 
 
-\begin{frame}[label=sec-13]{Polar trick}
+\begin{frame}[label=sec-15]{Polar trick}
 \begin{itemize}
 \item Polar: $$P^\circ = \Bigg\{ \vec y \in \mathbb{Q}^d :  \forall \vec p \in P, \  \vec p \cdot \vec y  \ \geq 0 \Bigg\}$$
 \end{itemize}
@@ -245,7 +273,7 @@ $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones
 
 
 
-\begin{frame}[label=sec-14]{References}
+\begin{frame}[label=sec-16]{References}
 \begin{itemize}
 \item Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
 \item Integer points in polyhedra: Alexander Barvinok
@@ -253,11 +281,11 @@ $$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones
 \end{frame}
 
 
-\begin{frame}[label=sec-15]{Thanks!}
+\begin{frame}[label=sec-17]{Thanks!}
 Questions?
 \end{frame}
 
-\begin{frame}[label=sec-16]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
+\begin{frame}[label=sec-18]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
 \includegraphics[width=.9\linewidth]{./res/polytope-as-sum-of-tangent-cones.png}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)

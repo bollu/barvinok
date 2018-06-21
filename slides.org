@@ -165,8 +165,29 @@ $$[K] = \sum_i \alpha_i [K_i]+ \text{lower dimesnional cones}$$
     $\alpha_i \in \{ -1, 1 \}$  and $K_i$ are unimodular.
 \end{center}
 
-- use LLL to generate a new basis with a new vector $w$
-- recurse over this new cone set.
+
+
+* Unimodular decomposition of a simple cone $K$: Part 1
+
+\begin{center}
+\includegraphics[width=10cm, keepaspectratio]{res/simple-cone-into-unimodular-cones}
+\end{center}
+
+* Unimodular decomposition of simple cone $K$: Part 2
+- $Index(K) = Volume(\Pi(K))$
+
+$Index(K) = 1 \leftrightarrow \text{K is unimodular}$. $Index(K)$ is a measure of non-unimodularity.
+
+- Introduce procedure which takes \textbf{polynomial steps} to \textbf{reduce Index(K)}
+- Let $K = cone(u_1, u_2, \ldots, u_d)$, $u_i \in \mathbb{Z}^d$, $u_i$ are linearly independent.
+- High level idea:
+    + Pick a non-zero integer point $p$ in $K$ (why does this integer point exist?)
+          + Use minkowski convex body theorem: large enough symmetric object centered at origin will have a non zero integer point.
+    + create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
+    + make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
+    + make new cones, $K_i = cone(\texttt{Basis}_j)$ and show that $Index(K_i) < Index(K)$
+    + $K = \sum \alpha_i K_i + \text{faces of \(K_i \)}$
+    + show that $Index(K_i)$ reduces by a large enough factor that poly rounds are enough to reduce to 1
 
 
 * Polar trick
