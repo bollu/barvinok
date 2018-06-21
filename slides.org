@@ -249,7 +249,23 @@ Volume(\Pi_0) &= \prod_{i=1}^d \frac{2 |u_i|}{\sqrt[d]{Index(K)}}\\
 \end{center}
 
 
-* LLL 
+* LLL  (Lenstra–Lenstra–Lovász lattice basis reduction)
+- Given an arbitrary basis $u_i \in \mathbb{Z}^d$ of a lattice, produces a new basis which is "nicer".
+- New basis consists of shorter vectors that are "more orthogonal"
+- Runs in polynomial time.
+- Determining \textit{shortest basis} is hard - used in cryptosystems IIUC.
+
+\begin{center}
+\includegraphics[width=7cm, keepaspectratio]{res/lattice-reduction}
+\end{center}
+- Black is input, red is output.
+
+
+* Using LLL
+- High level idea:
+    + Pick a non-zero integer point $p$.
+    + create $d$ new "potential basis sets", $\texttt{PotentialBasis}_j = \{u_1, u_2 , \ldots, u_d\} \setminus \{u_j\} \cup \{p\}$
+    + make $\text{Basis}_j = \texttt{LLL}(\texttt{PotentialBasis}_j)$  (+ ellided details)
 
 * Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)
 [[./res/polytope-as-sum-of-tangent-cones.png]]
