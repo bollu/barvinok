@@ -1,6 +1,6 @@
-% Created 2018-06-21 Thu 01:58
+% Created 2018-06-21 Thu 03:21
 \documentclass[8pt]{beamer}
-\usepackage[latin1]{inputenc}
+\usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{fixltx2e}
 \usepackage{graphicx}
@@ -177,7 +177,7 @@
 \begin{itemize}
 \item Consider the positive orthant in 3D: $P \subset \mathbb{Q}^3 = \Big\{(x, y, z) \mid x, y, z \geq 0 \Big\}$
 \item $P = cone((1, 0, 0), (0, 1, 0), (0, 0, 1))$
-\item this is a simple cone, and counting is simple:
+\item this is a simple cone, and here's how we count it:
 \end{itemize}
 
 \begin{align*}
@@ -206,9 +206,46 @@ $$\mathcal{F}(SK) &= \Bigg(\underbrace{\sum_{\vec p \in \Pi \cap \mathbb{Z}^d} x
                            \underbrace{\prod_i \frac{1}{1 - x^{u_i}}}_\text{tile starting point \( \vec{x} \)}$$
 \end{frame}
 
+\begin{frame}[label=sec-12]{Performance - How?}
+\begin{itemize}
+\item Write simple cone as sum of unimodular cones:
+\end{itemize}
+$$[K] = \sum_i \alpha_i [K_i]+ \text{lower dimesnional cones}$$ 
+
+\begin{itemize}
+\item We concentrate on \$$\sum$$_{\text{i}}$ $\alpha$$_{\text{i}}$ [K$_{\text{i]}}$
+\end{itemize}
+\begin{center}
+    $\alpha_i \in \{ -1, 1 \}$  and $K_i$ are unimodular.
+\end{center}
+
+\begin{itemize}
+\item use LLL to generate a new basis with a new vector $w$
+\item recurse over this new cone set.
+\end{itemize}
+\end{frame}
 
 
-\begin{frame}[label=sec-12]{References}
+\begin{frame}[label=sec-13]{Polar trick}
+\begin{itemize}
+\item Polar: $$P^\circ = \Bigg\{ \vec y \in \mathbb{Q}^d :  \forall \vec p \in P, \  \vec p \cdot \vec y  \ \geq 0 \Bigg\}$$
+\end{itemize}
+
+\begin{center}
+\includegraphics[width=3.40cm, keepaspectratio]{res/polar-of-cone.png}
+\end{center}
+
+\begin{itemize}
+\item Lower dimensional cones do not matter. First take $[K^\circ]$, then compue unimodular decomposition of this:
+\end{itemize}
+$$[K^\circ] = \sum_i \alpha_i [K_i] + \text{lower dimensional cones}$$
+$$[(K^\circ)^\circ] = [K] = \sum_i \alpha_i K_i + \text{cones with lines}$$
+$$ \mathcal{F}([K]) = \sum_i \alpha_i \mathcal{F}(K_i) + \mathcal{F}(\text{cones with lines}) = \sum_i \alpha_i \mathcal{F}(K_i) + 0$$
+\end{frame}
+
+
+
+\begin{frame}[label=sec-14]{References}
 \begin{itemize}
 \item Lattice Points, Polyhedra, and Complexity: Alexander Barvinok
 \item Integer points in polyhedra: Alexander Barvinok
@@ -216,11 +253,11 @@ $$\mathcal{F}(SK) &= \Bigg(\underbrace{\sum_{\vec p \in \Pi \cap \mathbb{Z}^d} x
 \end{frame}
 
 
-\begin{frame}[label=sec-13]{Thanks!}
+\begin{frame}[label=sec-15]{Thanks!}
 Questions?
 \end{frame}
 
-\begin{frame}[label=sec-14]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
+\begin{frame}[label=sec-16]{Assuming $\mathcal{F}$ for cones, derive full $\mathcal{F}$: Part 1.2 (Polytopes)}
 \includegraphics[width=.9\linewidth]{./res/polytope-as-sum-of-tangent-cones.png}
 \end{frame}
 % Emacs 24.5.1 (Org mode 8.2.10)
